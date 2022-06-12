@@ -7,3 +7,15 @@ before_install:
  
 script:
   - docker run -e CI=true samvalvi/react-dev npm run test
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-2"
+  app: "react-app"
+  env: "Reactapp-env"
+  bucket_name: "elasticbeanstalk-us-east-2-776771536963"
+  bucket_path: "react-app"
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: "$AWS_SECRET_KEY"
+  on:
+    branch: master
