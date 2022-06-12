@@ -1,0 +1,9 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -f .Dockerfile.dev -t samvalvi/react-dev .
+ 
+script:
+  - docker run -e CI=true samvalvi/react-dev npm run test
